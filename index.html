@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Winterbergstüble - Ausflugslokal & Sportgaststätte</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+            color: #000;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            background-color: #f8f8f8;
+            border-bottom: 2px solid #000;
+            justify-content: center;
+        }
+        .logo {
+            height: 150px;
+            margin-right: 10px;
+        }
+        .content {
+            display: flex;
+            justify-content: space-between;
+            max-width: 1100px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        .info {
+            flex: 1;
+            padding-right: 20px;
+        }
+        .menu {
+            flex: 1;
+            text-align: center;
+        }
+        .menu p {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .menu-link {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #000;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .menu-link-empf{
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #000;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .menu-link:hover {
+            background-color: #444;
+        }
+        .menu-link-empf:hover{
+            background-color: #444;
+        }
+        .reservation {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background-color: white;
+            padding: 20px;
+            margin: 30px auto;
+            max-width: 500px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        .social-links {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .social-links a {
+            text-decoration: none;
+            color: #000;
+            font-weight: bold;
+            margin: 0 10px;
+        }
+        .social-links a:hover {
+            color: #444;
+        }
+        .social-links .separator {
+            display: inline-block;
+            width: 1px;
+            height: 16px;
+            background-color: #000;
+            margin: 0 10px;
+        }
+        .gallery {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .gallery img {
+            width: 200px;
+            height: auto;
+            border-radius: 5px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img class="logo" src="logo2.jpg" alt="Winterbergstüble Logo">
+    </div>
+    <div class="content">
+        <div class="info">
+            <h2>Willkommen im Winterbergstüble!</h2>
+            <p>Genießen Sie unsere köstlichen Speisen in gemütlicher Atmosphäre.</p>
+            <p><strong>Adresse:</strong> Hengnau 106, 88142 Wasserburg (Bodensee)</p>
+            <h3>Öffnungszeiten:</h3>
+            <p>Montag: 17:00 - 22:00 Uhr</p>
+            <p>Dienstag: Ruhetag</p>
+            <p>Mittwoch - Samstag: 17:00 - 22:00 Uhr</p>
+            <p>Sonntag & Feiertage: 10:00 - 22:00 Uhr</p>
+        </div>
+        <div class="menu">
+            <h3>Unsere Speisekarte</h3>
+            <a class="menu-link" href="speisekarte.pdf" target="_blank">Speisekarte ansehen</a>
+            <h3>Unsere Empfehlungskarte</h3>
+            <p><em>04.03.2025 - 10.03.2025</em></p>
+            <a class="menu-link-empf" href="empfehlung.pdf" target="_blank">Empfehlungskarte ansehen</a>
+            <p>Alle Speisen auch zum Mitnehmen möglich!</p>
+        </div>
+    </div>
+    <div class="gallery">
+        <img src="Bild1.jpg" alt="Gericht 1">
+        <img src="bild2.jpg" alt="Gericht 2">
+        <img src="bild3.jpg" alt="Restaurant">
+        <img src="bild4.jpg" alt="Restaurant">
+        <img src="bild5.jpg" alt="Restaurant">
+        <img src="bild6.jpg" alt="Restaurant">
+    </div>
+    <div class="reservation">
+        <h3>Reservierungen nehmen wir unter:</h3>
+        <p><strong>Telefon:</strong> 08382 9890885</p>
+        <p><strong>E-Mail:</strong> winterbergstueble@gmail.com</p>
+    </div>
+    <div class="social-links">
+        <p>Folgen Sie uns auf:</p>
+        <a href="https://www.instagram.com/winterbergstueble/" target="_blank">Instagram</a>
+        <span class="separator"></span>
+        <a href="https://www.facebook.com/Winterbergstueble" target="_blank">Facebook</a>
+    </div>
+</body>
+</html>
