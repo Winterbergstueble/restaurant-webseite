@@ -85,31 +85,6 @@
             background-color: #000;
             margin: 0 10px;
         }
-        <!-- Schneefall -->
-<style>
-    .snowflake {
-        position: fixed;
-        top: -10px;
-        color: #fff;
-        font-size: 1em;
-        user-select: none;
-        pointer-events: none;
-        z-index: 9999;
-        animation: fall linear infinite;
-    }
-
-    @keyframes fall {
-        0% {
-            transform: translateY(0);
-            opacity: 1;
-        }
-        100% {
-            transform: translateY(100vh);
-            opacity: 0;
-        }
-    }
-</style>
-
 <script>
     function createSnowflake() {
         const snowflake = document.createElement("div");
@@ -212,4 +187,5 @@
     
 </body>
 </html>
+
 
