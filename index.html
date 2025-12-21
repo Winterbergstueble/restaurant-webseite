@@ -1,223 +1,420 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Winterbergstüble - Ausflugslokal & Sportgaststätte</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Winterbergstüble - Ausflugslokal & Sportgaststätte</title>
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f8f8f8;
-            color: #000;
-        }
+  <style>
+    :root{
+      --bg: #f6f7fb;
+      --card: #ffffff;
+      --text: #121417;
+      --muted: #55606e;
+      --line: rgba(18, 20, 23, .12);
+      --shadow: 0 12px 30px rgba(18,20,23,.10);
+      --shadow-soft: 0 8px 18px rgba(18,20,23,.08);
+      --radius: 18px;
+      --radius-sm: 12px;
+      --accent: #0f172a; /* fast schwarz, edler */
+      --accent-2: #1d4ed8; /* dezent blau für Links */
+    }
 
-        .header {
-            display: flex;
-            align-items: center;
-            padding: 12px;
-            background-color: #f8f8f8;
-            border-bottom: 2px solid #000;
-            justify-content: center;
-        }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body{
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color: var(--text);
+      background:
+        radial-gradient(1200px 500px at 50% -20%, rgba(29,78,216,.10), transparent 60%),
+        radial-gradient(900px 500px at 10% 20%, rgba(15,23,42,.08), transparent 55%),
+        var(--bg);
+      line-height: 1.55;
+      overflow-x: hidden;
+    }
 
-        /* Logo responsive */
-        .logo {
-            height: auto;
-            width: 100%;
-            max-width: 360px;
-            max-height: 140px;
-        }
+    a{ color: inherit; }
 
-        .content {
-            display: flex;
-            gap: 20px;
-            justify-content: space-between;
-            max-width: 1100px;
-            margin: 20px auto;
-            padding: 20px;
-            background: white;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-            align-items: flex-start;
-            border-radius: 10px;
-        }
+    /* --- Snow (CSS + JS erstellt die Elemente) --- */
+    .snowflake{
+      position: fixed;
+      top: -40px;
+      z-index: 1;
+      user-select: none;
+      pointer-events: none;
+      filter: drop-shadow(0 4px 6px rgba(0,0,0,.08));
+      opacity: .85;
+      animation-name: fall, sway;
+      animation-timing-function: linear, ease-in-out;
+      animation-iteration-count: 1, infinite;
+    }
+    @keyframes fall{
+      to { transform: translateY(calc(100vh + 60px)); }
+    }
+    @keyframes sway{
+      0%,100%{ margin-left: 0; }
+      50%{ margin-left: 26px; }
+    }
 
-        .info {
-            flex: 1;
-            padding-right: 20px;
-        }
+    /* --- Layout --- */
+    .container{
+      width: min(1100px, calc(100% - 40px));
+      margin: 0 auto;
+      position: relative;
+      z-index: 2; /* über Snow */
+    }
 
-        .menu {
-            flex: 1;
-            text-align: center;
-        }
+    .header{
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      backdrop-filter: blur(10px);
+      background: rgba(246,247,251,.75);
+      border-bottom: 1px solid var(--line);
+    }
+    .header-inner{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 0;
+    }
+    .logo{
+      height: 120px;
+      max-width: 90%;
+      object-fit: contain;
+    }
 
-        .menu-link {
-            display: inline-block;
-            margin-top: 10px;
-            padding: 10px 20px;
-            background-color: #000;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: 0.2s;
-            position: relative;
-            overflow: hidden;
-        }
+    .hero{
+      margin: 22px auto 18px;
+      background: linear-gradient(135deg, rgba(15,23,42,.92), rgba(29,78,216,.88));
+      color: #fff;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 18px 18px;
+      text-align: center;
+      overflow: hidden;
+      position: relative;
+    }
+    .hero:before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background:
+        radial-gradient(600px 200px at 20% 10%, rgba(255,255,255,.16), transparent 60%),
+        radial-gradient(700px 240px at 80% 40%, rgba(255,255,255,.12), transparent 60%);
+      pointer-events:none;
+    }
+    .hero h2{
+      margin: 0;
+      font-size: clamp(18px, 3.2vw, 26px);
+      letter-spacing: .2px;
+      position: relative;
+    }
+    .hero p{
+      margin: 8px 0 0;
+      opacity: .92;
+      position: relative;
+    }
 
-        .menu-link:hover {
-            background-color: #444;
-        }
+    .grid{
+      display: grid;
+      grid-template-columns: 1.2fr .9fr;
+      gap: 18px;
+      margin: 18px auto 0;
+    }
 
-        /* Buttons auf Handy schön breit */
-        .menu-link {
-            width: 100%;
-            max-width: 320px;
-            text-align: center;
-        }
+    .card{
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-soft);
+      padding: 20px;
+    }
 
-        .reservation {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            background-color: white;
-            padding: 20px;
-            margin: 30px auto;
-            max-width: 500px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-        }
+    h2, h3{
+      margin: 0 0 10px;
+      letter-spacing: .2px;
+    }
+    h2{ font-size: 22px; }
+    h3{ font-size: 16px; color: var(--accent); }
 
-        .social-links {
-            margin-top: 20px;
-            text-align: center;
-            padding-bottom: 30px;
-        }
+    .lead{
+      margin: 6px 0 14px;
+      color: var(--muted);
+    }
 
-        .social-links a {
-            text-decoration: none;
-            color: #000;
-            font-weight: bold;
-            margin: 0 10px;
-        }
+    .kv{
+      display: grid;
+      gap: 10px;
+      margin-top: 8px;
+    }
+    .kv .row{
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: var(--radius-sm);
+      background: rgba(15,23,42,.03);
+      border: 1px solid rgba(15,23,42,.05);
+    }
+    .kv .k{
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: .6px;
+    }
+    .kv .v{
+      color: var(--text);
+    }
 
-        .social-links a:hover {
-            color: #444;
-        }
+    .hours{
+      margin-top: 14px;
+    }
+    .hours ul{
+      margin: 8px 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 8px;
+    }
+    .hours li{
+      padding: 10px 12px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--line);
+      background: #fff;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .hours li span:first-child{ color: var(--muted); }
+    .hours li strong{ white-space: nowrap; }
 
-        .social-links .separator {
-            display: inline-block;
-            width: 1px;
-            height: 16px;
-            background-color: #000;
-            margin: 0 10px;
-        }
+    .divider{
+      height: 1px;
+      background: var(--line);
+      margin: 16px 0;
+    }
 
-        /* Weihnachtsbanner etwas schöner */
-        .xmas-banner {
-            text-align: center;
-            background: #fff;
-            margin: 20px auto;
-            padding: 15px;
-            max-width: 800px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            border-top: 4px solid #b30000; /* dezenter Weihnachts-Akzent */
-        }
+    .buttons{
+      display: grid;
+      gap: 10px;
+      margin-top: 10px;
+    }
 
-        /* Responsive: auf kleineren Geräten untereinander */
-        @media (max-width: 900px) {
-            .content {
-                flex-direction: column;
-                padding: 16px;
-                margin: 16px;
-            }
-            .info {
-                padding-right: 0;
-            }
-            .menu {
-                text-align: left;
-            }
-        }
+    .btn{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,.10);
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 10px 22px rgba(15,23,42,.18);
+      transition: transform .12s ease, box-shadow .12s ease, background .12s ease;
+    }
+    .btn:hover{
+      transform: translateY(-1px);
+      box-shadow: 0 14px 26px rgba(15,23,42,.22);
+      background: #0b1224;
+    }
+    .btn.secondary{
+      background: #fff;
+      color: var(--accent);
+      border: 1px solid var(--line);
+      box-shadow: none;
+    }
+    .btn.secondary:hover{
+      background: rgba(15,23,42,.03);
+      box-shadow: none;
+    }
+
+    .callout{
+      margin-top: 14px;
+      padding: 12px 14px;
+      border-radius: var(--radius-sm);
+      background: rgba(29,78,216,.06);
+      border: 1px solid rgba(29,78,216,.16);
+      color: var(--text);
+    }
+    .callout strong{ color: var(--accent); }
+
+    .reservation{
+      margin: 18px auto 0;
+      text-align: center;
+    }
+    .reservation p{
+      margin: 6px 0 0;
+      color: var(--muted);
+    }
+    .reservation .big{
+      margin-top: 10px;
+      font-size: 16px;
+      color: var(--text);
+    }
+    .reservation .big a{
+      color: var(--accent-2);
+      text-decoration: none;
+      font-weight: 700;
+    }
+    .reservation .big a:hover{ text-decoration: underline; }
+
+    .social{
+      margin: 14px 0 28px;
+      text-align: center;
+      color: var(--muted);
+    }
+    .social a{
+      color: var(--accent);
+      font-weight: 700;
+      text-decoration: none;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: #fff;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 6px;
+      transition: background .12s ease, transform .12s ease;
+    }
+    .social a:hover{
+      background: rgba(15,23,42,.03);
+      transform: translateY(-1px);
+    }
+
+    /* Responsive */
+    @media (max-width: 880px){
+      .grid{ grid-template-columns: 1fr; }
+      .kv .row{ grid-template-columns: 1fr; }
+      .logo{ height: 96px; }
+    }
+  </style>
 </head>
 
 <body>
-
-    <!-- Header -->
-    <div class="header">
-        <img class="logo" src="logo2.jpg" alt="Winterbergstüble Logo">
+  <!-- Header -->
+  <header class="header">
+    <div class="container header-inner">
+      <img class="logo" src="logo2.jpg" alt="Winterbergstüble Logo" />
     </div>
+  </header>
 
-    <!-- Weihnachtsbanner -->
-    <div class="xmas-banner">
-        <h2 style="margin:0;">🎄 Frohe Weihnachten & Guten Rutsch ins 2026 🎆</h2>
-        <p style="margin:5px 0 0;">
-            Wir wünschen Ihnen schöne Feiertage und freuen uns auf Ihren Besuch!
-        </p>
-    </div>
+  <main class="container">
+    <!-- Weihnachts-Banner -->
+    <section class="hero" aria-label="Weihnachtsgruß">
+      <h2>🎄 Frohe Weihnachten &amp; Guten Rutsch ins 2026 🎆</h2>
+      <p>Wir wünschen Ihnen schöne Feiertage und freuen uns auf Ihren Besuch!</p>
+    </section>
 
     <!-- Hauptinhalt -->
-    <div class="content">
-        <div class="info">
-            <h2>Willkommen im Winterbergstüble!</h2>
-            <p>Genießen Sie unsere köstlichen Speisen in gemütlicher Atmosphäre.</p>
+    <section class="grid">
+      <!-- Info -->
+      <article class="card">
+        <h2>Willkommen im Winterbergstüble!</h2>
+        <p class="lead">Genießen Sie unsere köstlichen Speisen in gemütlicher Atmosphäre.</p>
 
-            <p><strong>Adresse:</strong><br>
-            Hengnau 106<br>
-            88142 Wasserburg (am Bodensee)</p>
-
-            <h3>Öffnungszeiten:</h3>
-            <p>Montag & Dienstag: <strong>Ruhetag</strong></p>
-            <p>Mittwoch – Samstag: <strong>17:00 – 22:00 Uhr</strong></p>
-            <p>Sonntag & Feiertage: <strong>10:00 – 15:00 Uhr & 17:00 – 22:00 Uhr</strong></p>
-
-            <h3>Öffnungszeiten an Weihnachten & Jahreswechsel:</h3>
-            <p>25.12.2025: <strong>geschlossen</strong></p>
-            <p>26.12.2025: <strong>10:00 – 15:00 Uhr & 17:00 – 22:00 Uhr</strong></p>
-            <p>31.12.2025: <strong>geschlossen</strong></p>
-            <p>01.01.2026: <strong>geschlossen</strong></p>
+        <div class="kv" aria-label="Kontakt & Adresse">
+          <div class="row">
+            <div class="k">Adresse</div>
+            <div class="v">
+              Hengnau 106<br />
+              88142 Wasserburg (am Bodensee)
+            </div>
+          </div>
         </div>
 
-        <div class="menu">
-            <h3>Unsere Speisekarten</h3>
+        <div class="hours">
+          <h3>Öffnungszeiten</h3>
+          <ul>
+            <li><span>Montag &amp; Dienstag</span> <strong>Ruhetag</strong></li>
+            <li><span>Mittwoch – Samstag</span> <strong>17:00 – 22:00 Uhr</strong></li>
+            <li><span>Sonntag &amp; Feiertage</span> <strong>10:00 – 15:00 Uhr &amp; 17:00 – 22:00 Uhr</strong></li>
+          </ul>
 
-            <a class="menu-link" href="Speisekarte.pdf" target="_blank">
-                Speisekarte ansehen
-            </a>
+          <div class="divider"></div>
 
-            <br><br>
-
-            <a class="menu-link" href="Weihnachtskarte.pdf" target="_blank">
-                Weihnachtskarte ansehen
-            </a>
-
-            <p style="margin-top:20px;">
-                Essen zum Mitnehmen ist bei den meisten Gerichten möglich.<br>
-                Rufen Sie uns an unter:<br>
-                <strong><a href="tel:+4983829890885" style="color:#000; text-decoration:none;">08382 9890885</a></strong>
-            </p>
+          <h3>Weihnachten &amp; Jahreswechsel</h3>
+          <ul>
+            <li><span>25.12.</span> <strong>geschlossen</strong></li>
+            <li><span>26.12.</span> <strong>10:00 – 15:00 Uhr &amp; 17:00 – 22:00 Uhr</strong></li>
+            <li><span>31.12.</span> <strong>geschlossen</strong></li>
+            <li><span>01.01.2026</span> <strong>geschlossen</strong></li>
+          </ul>
         </div>
-    </div>
+      </article>
+
+      <!-- Menü -->
+      <aside class="card">
+        <h3>Unsere Speisekarten</h3>
+
+        <div class="buttons">
+          <a class="btn" href="Speisekarte.pdf" target="_blank" rel="noopener">
+            🍽️ Speisekarte ansehen
+          </a>
+          <a class="btn secondary" href="Weihnachtskarte.pdf" target="_blank" rel="noopener">
+            🎁 Weihnachtskarte ansehen
+          </a>
+        </div>
+
+        <div class="callout">
+          Essen zum Mitnehmen ist bei den meisten Gerichten möglich.<br />
+          Rufen Sie uns an unter: <strong>08382 9890885</strong>
+        </div>
+      </aside>
+    </section>
 
     <!-- Reservierung -->
-    <div class="reservation">
-        <h3>Reservierungen</h3>
-        <p><strong>Telefon:</strong> <a href="tel:+4983829890885" style="color:#000; text-decoration:none;">08382 9890885</a></p>
-        <p><strong>E-Mail:</strong> <a href="mailto:winterbergstueble@gmail.com" style="color:#000; text-decoration:none;">winterbergstueble@gmail.com</a></p>
-    </div>
+    <section class="card reservation" aria-label="Reservierungen">
+      <h3>Reservierungen</h3>
+      <p class="big">
+        <strong>Telefon:</strong>
+        <a href="tel:+4983829890885">08382 9890885</a>
+      </p>
+      <p class="big">
+        <strong>E-Mail:</strong>
+        <a href="mailto:winterbergstueble@gmail.com">winterbergstueble@gmail.com</a>
+      </p>
+    </section>
 
     <!-- Social Media -->
-    <div class="social-links">
-        <p>Folgen Sie uns auf:</p>
-        <a href="https://www.instagram.com/winterbergstueble/" target="_blank">Instagram</a>
-        <span class="separator"></span>
-        <a href="https://www.facebook.com/Winterbergstueble" target="_blank">Facebook</a>
-    </div>
+    <section class="social" aria-label="Social Media">
+      <p>Folgen Sie uns auf:</p>
+      <a href="https://www.instagram.com/winterbergstueble/" target="_blank" rel="noopener">📷 Instagram</a>
+      <a href="https://www.facebook.com/Winterbergstueble" target="_blank" rel="noopener">👍 Facebook</a>
+    </section>
+  </main>
 
+  <script>
+    // Schnee erzeugen (leicht & performant)
+    function createSnowflake() {
+      const snowflake = document.createElement("div");
+      snowflake.className = "snowflake";
+      snowflake.textContent = "❄";
+
+      const size = Math.random() * 12 + 10; // 10–22px
+      const left = Math.random() * window.innerWidth;
+      const fallDuration = Math.random() * 5 + 6; // 6–11s
+      const swayDuration = Math.random() * 2 + 2.5; // 2.5–4.5s
+
+      snowflake.style.left = left + "px";
+      snowflake.style.fontSize = size + "px";
+      snowflake.style.animationDuration = `${fallDuration}s, ${swayDuration}s`;
+
+      document.body.appendChild(snowflake);
+
+      window.setTimeout(() => snowflake.remove(), (fallDuration + 1) * 1000);
+    }
+
+    // Weniger Dichte auf mobilen Geräten
+    const isMobile = window.matchMedia("(max-width: 880px)").matches;
+    const interval = isMobile ? 550 : 320;
+
+    setInterval(createSnowflake, interval);
+  </script>
 </body>
 </html>
-
