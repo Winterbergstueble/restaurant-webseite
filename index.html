@@ -85,6 +85,50 @@
             background-color: #000;
             margin: 0 10px;
         }
+        <!-- Schneefall -->
+<style>
+    .snowflake {
+        position: fixed;
+        top: -10px;
+        color: #fff;
+        font-size: 1em;
+        user-select: none;
+        pointer-events: none;
+        z-index: 9999;
+        animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+        0% {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        100% {
+            transform: translateY(100vh);
+            opacity: 0;
+        }
+    }
+</style>
+
+<script>
+    function createSnowflake() {
+        const snowflake = document.createElement("div");
+        snowflake.className = "snowflake";
+        snowflake.innerHTML = "❄";
+        snowflake.style.left = Math.random() * window.innerWidth + "px";
+        snowflake.style.fontSize = Math.random() * 10 + 10 + "px";
+        snowflake.style.animationDuration = Math.random() * 5 + 5 + "s";
+
+        document.body.appendChild(snowflake);
+
+        setTimeout(() => {
+            snowflake.remove();
+        }, 10000);
+    }
+
+    setInterval(createSnowflake, 300);
+</script>
+
     </style>
 </head>
 <body>
@@ -93,6 +137,20 @@
     <div class="header">
         <img class="logo" src="logo2.jpg" alt="Winterbergstüble Logo">
     </div>
+
+     <div style="
+    text-align:center;
+    background:#fff;
+    margin:20px auto;
+    padding:15px;
+    max-width:800px;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,0.1);">
+    <h2 style="margin:0;">🎄 Frohe Weihnachten & Guten Rutsch ins 2026 🎆</h2>
+    <p style="margin:5px 0 0;">
+        Wir wünschen Ihnen schöne Feiertage und freuen uns auf Ihren Besuch!
+    </p>
+</div>
 
     <!-- Hauptinhalt -->
     <div class="content">
@@ -151,6 +209,7 @@
         <span class="separator"></span>
         <a href="https://www.facebook.com/Winterbergstueble" target="_blank">Facebook</a>
     </div>
-
+    
 </body>
 </html>
+
