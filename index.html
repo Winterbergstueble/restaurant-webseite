@@ -22,7 +22,6 @@
         }
         .logo {
             height: 150px;
-            margin-right: 10px;
         }
         .content {
             display: flex;
@@ -41,10 +40,6 @@
             flex: 1;
             text-align: center;
         }
-        .menu p {
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
         .menu-link {
             display: inline-block;
             margin-top: 10px;
@@ -54,19 +49,7 @@
             text-decoration: none;
             border-radius: 5px;
         }
-        .menu-link-empf{
-            display: inline-block;
-            margin-top: 10px;
-            padding: 10px 20px;
-            background-color: #000;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-        }
         .menu-link:hover {
-            background-color: #444;
-        }
-        .menu-link-empf:hover{
             background-color: #444;
         }
         .reservation {
@@ -102,73 +85,72 @@
             background-color: #000;
             margin: 0 10px;
         }
-        .gallery {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 20px;
-        }
-        .gallery img {
-            width: 200px;
-            height: auto;
-            border-radius: 5px;
-            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-        }
     </style>
 </head>
 <body>
+
+    <!-- Header -->
     <div class="header">
         <img class="logo" src="logo2.jpg" alt="Winterbergstüble Logo">
     </div>
+
+    <!-- Hauptinhalt -->
     <div class="content">
         <div class="info">
             <h2>Willkommen im Winterbergstüble!</h2>
             <p>Genießen Sie unsere köstlichen Speisen in gemütlicher Atmosphäre.</p>
-            <p><strong>Adresse:</strong> Hengnau 106, 88142 Wasserburg (Bodensee)</p>
+
+            <p><strong>Adresse:</strong><br>
+            Hengnau 106<br>
+            88142 Wasserburg (am Bodensee)</p>
+
             <h3>Öffnungszeiten:</h3>
-            <p>Montag & Dienstag: Ruhetag</p>
-            <p>Mittwoch - Samstag: 17:00 - 22:00</p>
-            <p>Sonntag & Feiertage: 10:00 - 15:00 & 17:00 - 22:00</p>
-            <p>Am 15.11.2025 haben wir eine geschlossene Gesellschaft. Sie können, aber trotzdem Essen bestellen und abholen. </p>
+            <p>Montag & Dienstag: <strong>Ruhetag</strong></p>
+            <p>Mittwoch – Samstag: <strong>17:00 – 22:00 Uhr</strong></p>
+            <p>Sonntag & Feiertage: <strong>10:00 – 15:00 Uhr & 17:00 – 22:00 Uhr</strong></p>
+
+            <h3>Öffnungszeiten an Weihnachten & Jahreswechsel:</h3>
+            <p>25.12.: <strong>geschlossen</strong></p>
+            <p>26.12.: <strong>10:00 – 15:00 Uhr & 17:00 – 22:00 Uhr</strong></p>
+            <p>31.12.: <strong>geschlossen</strong></p>
+            <p>01.01.2026: <strong>geschlossen</strong></p>
         </div>
+
         <div class="menu">
-            <h3>Unsere Speisekarte</h3>
-            <a class="menu-link" href="Speisekarte.pdf" target="_blank">Speisekarte ansehen</a>
-            <!--<h3>Unsere Empfehlungskarte</h3>
-            <p><em>01.08.2025 - 18.08.2025</em></p>
-            <a class="menu-link-empf" href="empfehlung.pdf" target="_blank">Empfehlungskarte ansehen</a> -->
-            <p>Essen zum Mitnehmen ist bei den meisten Gerichten auch möglich! Rufen Sie uns einfach an unter: 08382 9890885 </p>
+            <h3>Unsere Speisekarten</h3>
+
+            <a class="menu-link" href="Speisekarte.pdf" target="_blank">
+                Speisekarte ansehen
+            </a>
+
+            <br><br>
+
+            <a class="menu-link" href="Weihnachtskarte.pdf" target="_blank">
+                Weihnachtskarte ansehen
+            </a>
+
+            <p style="margin-top:20px;">
+                Essen zum Mitnehmen ist bei den meisten Gerichten möglich.<br>
+                Rufen Sie uns an unter:<br>
+                <strong>08382 9890885</strong>
+            </p>
         </div>
     </div>
-    <div class="gallery">
-        <img src="Bild1.jpg" alt="Gericht 1">
-        <img src="bild2.jpg" alt="Gericht 2">
-        <img src="bild3.jpg" alt="Restaurant">
-        <img src="bild4.jpg" alt="Restaurant">
-        <img src="bild5.jpg" alt="Restaurant">
-        <img src="bild6.jpg" alt="Restaurant">
-        <img src="Bild7.jpg" alt="Restaurant">
-        <img src="Bild8.jpg" alt="Restaurant">
-        <img src="Bild9.jpg" alt="Restaurant">
-    </div>
+
+    <!-- Reservierung -->
     <div class="reservation">
-        <h3>Reservierungen nehmen wir unter:</h3>
+        <h3>Reservierungen</h3>
         <p><strong>Telefon:</strong> 08382 9890885</p>
         <p><strong>E-Mail:</strong> winterbergstueble@gmail.com</p>
     </div>
+
+    <!-- Social Media -->
     <div class="social-links">
         <p>Folgen Sie uns auf:</p>
         <a href="https://www.instagram.com/winterbergstueble/" target="_blank">Instagram</a>
         <span class="separator"></span>
         <a href="https://www.facebook.com/Winterbergstueble" target="_blank">Facebook</a>
     </div>
+
 </body>
 </html>
-
-
-
-
-
-
-
-
