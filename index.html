@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Winterbergstüble - Ausflugslokal & Sportgaststätte</title>
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -12,34 +13,47 @@
             background-color: #f8f8f8;
             color: #000;
         }
+
         .header {
             display: flex;
             align-items: center;
-            padding: 10px;
+            padding: 12px;
             background-color: #f8f8f8;
             border-bottom: 2px solid #000;
             justify-content: center;
         }
+
+        /* Logo responsive */
         .logo {
-            height: 150px;
+            height: auto;
+            width: 100%;
+            max-width: 360px;
+            max-height: 140px;
         }
+
         .content {
             display: flex;
+            gap: 20px;
             justify-content: space-between;
             max-width: 1100px;
             margin: 20px auto;
             padding: 20px;
             background: white;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            align-items: flex-start;
+            border-radius: 10px;
         }
+
         .info {
             flex: 1;
             padding-right: 20px;
         }
+
         .menu {
             flex: 1;
             text-align: center;
         }
+
         .menu-link {
             display: inline-block;
             margin-top: 10px;
@@ -48,10 +62,22 @@
             color: white;
             text-decoration: none;
             border-radius: 5px;
+            transition: 0.2s;
+            position: relative;
+            overflow: hidden;
         }
+
         .menu-link:hover {
             background-color: #444;
         }
+
+        /* Buttons auf Handy schön breit */
+        .menu-link {
+            width: 100%;
+            max-width: 320px;
+            text-align: center;
+        }
+
         .reservation {
             display: flex;
             flex-direction: column;
@@ -65,19 +91,24 @@
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
         }
+
         .social-links {
             margin-top: 20px;
             text-align: center;
+            padding-bottom: 30px;
         }
+
         .social-links a {
             text-decoration: none;
             color: #000;
             font-weight: bold;
             margin: 0 10px;
         }
+
         .social-links a:hover {
             color: #444;
         }
+
         .social-links .separator {
             display: inline-block;
             width: 1px;
@@ -85,27 +116,35 @@
             background-color: #000;
             margin: 0 10px;
         }
-<script>
-    function createSnowflake() {
-        const snowflake = document.createElement("div");
-        snowflake.className = "snowflake";
-        snowflake.innerHTML = "❄";
-        snowflake.style.left = Math.random() * window.innerWidth + "px";
-        snowflake.style.fontSize = Math.random() * 10 + 10 + "px";
-        snowflake.style.animationDuration = Math.random() * 5 + 5 + "s";
 
-        document.body.appendChild(snowflake);
+        /* Weihnachtsbanner etwas schöner */
+        .xmas-banner {
+            text-align: center;
+            background: #fff;
+            margin: 20px auto;
+            padding: 15px;
+            max-width: 800px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-top: 4px solid #b30000; /* dezenter Weihnachts-Akzent */
+        }
 
-        setTimeout(() => {
-            snowflake.remove();
-        }, 10000);
-    }
-
-    setInterval(createSnowflake, 300);
-</script>
-
-    </style>
+        /* Responsive: auf kleineren Geräten untereinander */
+        @media (max-width: 900px) {
+            .content {
+                flex-direction: column;
+                padding: 16px;
+                margin: 16px;
+            }
+            .info {
+                padding-right: 0;
+            }
+            .menu {
+                text-align: left;
+            }
+        }
 </head>
+
 <body>
 
     <!-- Header -->
@@ -113,19 +152,13 @@
         <img class="logo" src="logo2.jpg" alt="Winterbergstüble Logo">
     </div>
 
-     <div style="
-    text-align:center;
-    background:#fff;
-    margin:20px auto;
-    padding:15px;
-    max-width:800px;
-    border-radius:10px;
-    box-shadow:0 0 10px rgba(0,0,0,0.1);">
-    <h2 style="margin:0;">🎄 Frohe Weihnachten & Guten Rutsch ins 2026 🎆</h2>
-    <p style="margin:5px 0 0;">
-        Wir wünschen Ihnen schöne Feiertage und freuen uns auf Ihren Besuch!
-    </p>
-</div>
+    <!-- Weihnachtsbanner -->
+    <div class="xmas-banner">
+        <h2 style="margin:0;">🎄 Frohe Weihnachten & Guten Rutsch ins 2026 🎆</h2>
+        <p style="margin:5px 0 0;">
+            Wir wünschen Ihnen schöne Feiertage und freuen uns auf Ihren Besuch!
+        </p>
+    </div>
 
     <!-- Hauptinhalt -->
     <div class="content">
@@ -143,9 +176,9 @@
             <p>Sonntag & Feiertage: <strong>10:00 – 15:00 Uhr & 17:00 – 22:00 Uhr</strong></p>
 
             <h3>Öffnungszeiten an Weihnachten & Jahreswechsel:</h3>
-            <p>25.12.: <strong>geschlossen</strong></p>
-            <p>26.12.: <strong>10:00 – 15:00 Uhr & 17:00 – 22:00 Uhr</strong></p>
-            <p>31.12.: <strong>geschlossen</strong></p>
+            <p>25.12.2025: <strong>geschlossen</strong></p>
+            <p>26.12.2025: <strong>10:00 – 15:00 Uhr & 17:00 – 22:00 Uhr</strong></p>
+            <p>31.12.2025: <strong>geschlossen</strong></p>
             <p>01.01.2026: <strong>geschlossen</strong></p>
         </div>
 
@@ -165,7 +198,7 @@
             <p style="margin-top:20px;">
                 Essen zum Mitnehmen ist bei den meisten Gerichten möglich.<br>
                 Rufen Sie uns an unter:<br>
-                <strong>08382 9890885</strong>
+                <strong><a href="tel:+4983829890885" style="color:#000; text-decoration:none;">08382 9890885</a></strong>
             </p>
         </div>
     </div>
@@ -173,8 +206,8 @@
     <!-- Reservierung -->
     <div class="reservation">
         <h3>Reservierungen</h3>
-        <p><strong>Telefon:</strong> 08382 9890885</p>
-        <p><strong>E-Mail:</strong> winterbergstueble@gmail.com</p>
+        <p><strong>Telefon:</strong> <a href="tel:+4983829890885" style="color:#000; text-decoration:none;">08382 9890885</a></p>
+        <p><strong>E-Mail:</strong> <a href="mailto:winterbergstueble@gmail.com" style="color:#000; text-decoration:none;">winterbergstueble@gmail.com</a></p>
     </div>
 
     <!-- Social Media -->
@@ -184,8 +217,7 @@
         <span class="separator"></span>
         <a href="https://www.facebook.com/Winterbergstueble" target="_blank">Facebook</a>
     </div>
-    
+
 </body>
 </html>
-
 
