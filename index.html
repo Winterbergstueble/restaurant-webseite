@@ -74,18 +74,23 @@
     }
 
     .brand-badge {
-      width: 52px;
-      height: 52px;
-      border-radius: 18px;
-      background: linear-gradient(135deg, var(--oxford-navy), var(--brandy));
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 24px;
-      font-weight: 700;
-      box-shadow: var(--shadow);
-    }
+  width: 52px;
+  height: 52px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, var(--oxford-navy), var(--brandy));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow);
+  overflow: hidden; /* wichtig für Bild */
+}
+
+.brand-badge img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* oder contain, je nach Logo */
+  border-radius: 18px; /* passt sich der Box an */
+}
 
     .brand-title {
       font-size: 20px;
@@ -575,7 +580,9 @@
   <header class="header">
     <div class="container nav">
           <div class="brand">
-        <div class="brand-badge">W</div>
+            <div class="brand-badge">
+              <img src="logo.png" alt="Winterbergstüble Logo">
+            </div>
         <div>
           <p class="brand-title">Winterbergstüble</p>
           <p class="brand-subtitle">Ausflugslokal & Sportgaststätte</p>
