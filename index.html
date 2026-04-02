@@ -3,408 +3,935 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Winterbergstüble - Ausflugslokal & Sportgaststätte</title>
-
+  <title>Winterberg Stüble</title>
   <style>
-    :root{
-      --bg: #f6f7fb;
-      --card: #ffffff;
-      --text: #121417;
-      --muted: #55606e;
-      --line: rgba(18, 20, 23, .12);
-      --shadow: 0 12px 30px rgba(18,20,23,.10);
-      --shadow-soft: 0 8px 18px rgba(18,20,23,.08);
-      --radius: 18px;
-      --radius-sm: 12px;
-      --accent: #0f172a; /* fast schwarz, edler */
-      --accent-2: #1d4ed8; /* dezent blau für Links */
+    :root {
+      --black: #000000;
+      --white-smoke: #f6f5f3;
+      --brandy: #763619;
+      --burnt-caramel: #cc6414;
+      --oxford-navy: #1d3557;
+      --text-soft: rgba(29, 53, 87, 0.82);
+      --shadow: 0 20px 50px rgba(29, 53, 87, 0.12);
+      --radius-xl: 28px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+      --max-width: 1200px;
     }
 
-    * { box-sizing: border-box; }
-    html, body { height: 100%; }
-    body{
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
       margin: 0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      color: var(--text);
-      background:
-        radial-gradient(1200px 500px at 50% -20%, rgba(29,78,216,.10), transparent 60%),
-        radial-gradient(900px 500px at 10% 20%, rgba(15,23,42,.08), transparent 55%),
-        var(--bg);
-      line-height: 1.55;
-      overflow-x: hidden;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--white-smoke);
+      color: var(--oxford-navy);
+      line-height: 1.6;
     }
 
-    a{ color: inherit; }
-
-    /* --- Snow (CSS + JS erstellt die Elemente) --- */
-    .snowflake{
-      position: fixed;
-      top: -40px;
-      z-index: 1;
-      user-select: none;
-      pointer-events: none;
-      filter: drop-shadow(0 4px 6px rgba(0,0,0,.08));
-      opacity: .85;
-      animation-name: fall, sway;
-      animation-timing-function: linear, ease-in-out;
-      animation-iteration-count: 1, infinite;
-    }
-    @keyframes fall{
-      to { transform: translateY(calc(100vh + 60px)); }
-    }
-    @keyframes sway{
-      0%,100%{ margin-left: 0; }
-      50%{ margin-left: 26px; }
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
-    /* --- Layout --- */
-    .container{
-      width: min(1100px, calc(100% - 40px));
-      margin: 0 auto;
-      position: relative;
-      z-index: 2; /* über Snow */
+    img {
+      max-width: 100%;
+      display: block;
     }
 
-    .header{
+    .topbar {
+      background: var(--oxford-navy);
+      color: white;
+      padding: 12px 16px;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .header {
       position: sticky;
       top: 0;
-      z-index: 5;
+      z-index: 50;
+      background: rgba(246, 245, 243, 0.95);
       backdrop-filter: blur(10px);
-      background: rgba(246,247,251,.75);
-      border-bottom: 1px solid var(--line);
+      border-bottom: 1px solid rgba(29, 53, 87, 0.08);
     }
-    .header-inner{
+
+    .container {
+      width: min(var(--max-width), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding: 16px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand-badge {
+      width: 52px;
+      height: 52px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, var(--oxford-navy), var(--brandy));
+      color: white;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 12px 0;
-    }
-    .logo{
-      height: 120px;
-      max-width: 90%;
-      object-fit: contain;
-    }
-
-    .hero{
-      margin: 22px auto 18px;
-      background: linear-gradient(135deg, rgba(15,23,42,.92), rgba(29,78,216,.88));
-      color: #fff;
-      border-radius: var(--radius);
+      font-size: 24px;
+      font-weight: 700;
       box-shadow: var(--shadow);
-      padding: 18px 18px;
-      text-align: center;
-      overflow: hidden;
-      position: relative;
     }
-    .hero:before{
-      content:"";
-      position:absolute;
-      inset:-2px;
-      background:
-        radial-gradient(600px 200px at 20% 10%, rgba(255,255,255,.16), transparent 60%),
-        radial-gradient(700px 240px at 80% 40%, rgba(255,255,255,.12), transparent 60%);
-      pointer-events:none;
-    }
-    .hero h2{
+
+    .brand-title {
+      font-size: 20px;
+      font-weight: 700;
       margin: 0;
-      font-size: clamp(18px, 3.2vw, 26px);
-      letter-spacing: .2px;
-      position: relative;
-    }
-    .hero p{
-      margin: 8px 0 0;
-      opacity: .92;
-      position: relative;
     }
 
-    .grid{
+    .brand-subtitle {
+      margin: 0;
+      color: var(--brandy);
+      font-size: 14px;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .nav-links a {
+      padding: 10px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(29, 53, 87, 0.12);
+      font-size: 14px;
+      font-weight: 600;
+      transition: 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      background: var(--oxford-navy);
+      color: white;
+      border-color: var(--oxford-navy);
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 64px 0 48px;
+    }
+
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      border-radius: 999px;
+      filter: blur(60px);
+      z-index: 0;
+    }
+
+    .hero::before {
+      width: 220px;
+      height: 220px;
+      background: rgba(204, 100, 20, 0.18);
+      left: -60px;
+      top: 20px;
+    }
+
+    .hero::after {
+      width: 260px;
+      height: 260px;
+      background: rgba(29, 53, 87, 0.15);
+      right: -80px;
+      bottom: 40px;
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 1;
       display: grid;
-      grid-template-columns: 1.2fr .9fr;
-      gap: 18px;
-      margin: 18px auto 0;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 40px;
+      align-items: center;
     }
 
-    .card{
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow-soft);
-      padding: 20px;
+    .pill {
+      display: inline-block;
+      border: 1px solid rgba(118, 54, 25, 0.18);
+      color: var(--brandy);
+      background: rgba(255, 255, 255, 0.75);
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 20px;
     }
 
-    h2, h3{
+    h1 {
+      font-size: clamp(38px, 6vw, 66px);
+      line-height: 1.04;
+      margin: 0 0 20px;
+    }
+
+    .lead {
+      font-size: 18px;
+      color: var(--text-soft);
+      max-width: 700px;
+      margin: 0 0 28px;
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 22px;
+      border-radius: 999px;
+      font-weight: 700;
+      border: 1px solid transparent;
+      transition: 0.2s ease;
+    }
+
+    .btn-primary {
+      background: var(--burnt-caramel);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      opacity: 0.95;
+    }
+
+    .btn-secondary {
+      border-color: var(--oxford-navy);
+      color: var(--oxford-navy);
+      background: transparent;
+    }
+
+    .btn-secondary:hover {
+      background: var(--oxford-navy);
+      color: white;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .card,
+    .image-card,
+    .info-card {
+      background: white;
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+    }
+
+    .card {
+      padding: 22px;
+    }
+
+    .stat-label,
+    .eyebrow {
+      color: var(--burnt-caramel);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .stat-title {
+      margin-top: 8px;
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .hero-image {
+      overflow: hidden;
+      border-radius: 34px;
+      box-shadow: 0 24px 60px rgba(29, 53, 87, 0.18);
+      position: relative;
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: 540px;
+      object-fit: cover;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: auto 0 0 0;
+      padding: 28px;
+      color: white;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+    }
+
+    section {
+      padding: 48px 0 32px;
+    }
+
+    .section-head {
+      max-width: 760px;
+      margin-bottom: 28px;
+    }
+
+    .section-head h2 {
+      margin: 10px 0 12px;
+      font-size: clamp(32px, 4vw, 52px);
+      line-height: 1.1;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--text-soft);
+      font-size: 18px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+    }
+
+    .image-card {
+      overflow: hidden;
+    }
+
+    .image-card img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+    }
+
+    .image-card .content,
+    .info-card .content {
+      padding: 24px;
+    }
+
+    .image-card h3,
+    .info-card h3,
+    .pdf-card h3 {
       margin: 0 0 10px;
-      letter-spacing: .2px;
-    }
-    h2{ font-size: 22px; }
-    h3{ font-size: 16px; color: var(--accent); }
-
-    .lead{
-      margin: 6px 0 14px;
-      color: var(--muted);
+      font-size: 24px;
     }
 
-    .kv{
+    .image-card p,
+    .info-card p,
+    .pdf-card p,
+    .list p,
+    .contact-item p {
+      margin: 0;
+      color: var(--text-soft);
+    }
+
+    .page {
+      padding-top: 8px;
+    }
+
+    .pdf-card {
+      background: white;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .pdf-top {
+      padding: 24px;
+      border-bottom: 1px solid rgba(29, 53, 87, 0.08);
+    }
+
+    .pdf-body {
+      padding: 24px;
+    }
+
+    .pdf-placeholder {
+      min-height: 260px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      border: 2px dashed rgba(118, 54, 25, 0.18);
+      border-radius: 24px;
+      background: var(--white-smoke);
+      padding: 24px;
+      margin-bottom: 16px;
+    }
+
+    .food-grid {
       display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+    }
+
+    .food-grid img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      border-radius: 28px 28px 0 0;
+    }
+
+    .event-meta {
+      margin-top: 14px;
+      font-weight: 700;
+      color: var(--brandy);
+    }
+
+    .list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .list p {
+      font-size: 17px;
+    }
+
+    .gradient-card {
+      background: linear-gradient(135deg, var(--oxford-navy), var(--brandy));
+      color: white;
+    }
+
+    .gradient-card p {
+      color: rgba(255, 255, 255, 0.88);
+    }
+
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 22px;
+    }
+
+    .contact-stack {
+      display: grid;
+      gap: 16px;
+    }
+
+    .contact-item {
+      background: var(--white-smoke);
+      border-radius: 20px;
+      padding: 18px;
+    }
+
+    .contact-label {
+      font-size: 14px;
+      color: var(--brandy);
+      margin-bottom: 6px;
+      font-weight: 700;
+    }
+
+    .contact-value {
+      font-weight: 700;
+      color: var(--oxford-navy);
+    }
+
+    .hours-list {
+      display: grid;
+      gap: 6px;
+      margin-top: 4px;
+      color: var(--oxford-navy);
+      font-weight: 700;
+    }
+
+    .notice {
+      margin-top: 12px;
+      color: var(--brandy);
+      font-size: 14px;
+    }
+
+    .map-card {
+      background: linear-gradient(135deg, rgba(29, 53, 87, 0.08), rgba(204, 100, 20, 0.12));
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+      padding: 24px;
+    }
+
+    .map-frame {
+      overflow: hidden;
+      border-radius: 22px;
+      border: 1px solid rgba(29, 53, 87, 0.12);
+      margin-top: 18px;
+    }
+
+    .map-frame iframe {
+      width: 100%;
+      height: 340px;
+      border: 0;
+      display: block;
+    }
+
+    .social-links {
+      display: flex;
+      flex-wrap: wrap;
       gap: 10px;
       margin-top: 8px;
     }
-    .kv .row{
-      display: grid;
-      grid-template-columns: 140px 1fr;
-      gap: 10px;
-      padding: 10px 12px;
-      border-radius: var(--radius-sm);
-      background: rgba(15,23,42,.03);
-      border: 1px solid rgba(15,23,42,.05);
-    }
-    .kv .k{
-      color: var(--muted);
-      font-weight: 600;
-      font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: .6px;
-    }
-    .kv .v{
-      color: var(--text);
+
+    .social-links a,
+    .footer-social a {
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-weight: 700;
     }
 
-    .hours{
-      margin-top: 14px;
+    .social-links a {
+      background: white;
+      color: var(--oxford-navy);
+      border: 1px solid rgba(29, 53, 87, 0.12);
     }
-    .hours ul{
-      margin: 8px 0 0;
-      padding: 0;
-      list-style: none;
-      display: grid;
-      gap: 8px;
+
+    footer {
+      margin-top: 48px;
+      padding: 32px 0;
+      background: var(--black);
+      color: white;
     }
-    .hours li{
-      padding: 10px 12px;
-      border-radius: var(--radius-sm);
-      border: 1px solid var(--line);
-      background: #fff;
+
+    .footer-row {
       display: flex;
       justify-content: space-between;
-      gap: 12px;
-    }
-    .hours li span:first-child{ color: var(--muted); }
-    .hours li strong{ white-space: nowrap; }
-
-    .divider{
-      height: 1px;
-      background: var(--line);
-      margin: 16px 0;
-    }
-
-    .buttons{
-      display: grid;
-      gap: 10px;
-      margin-top: 10px;
-    }
-
-    .btn{
-      display: inline-flex;
       align-items: center;
-      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-social {
+      display: flex;
       gap: 10px;
-      padding: 12px 14px;
-      border-radius: 14px;
-      text-decoration: none;
-      border: 1px solid rgba(255,255,255,.10);
-      background: var(--accent);
-      color: #fff;
-      box-shadow: 0 10px 22px rgba(15,23,42,.18);
-      transition: transform .12s ease, box-shadow .12s ease, background .12s ease;
-    }
-    .btn:hover{
-      transform: translateY(-1px);
-      box-shadow: 0 14px 26px rgba(15,23,42,.22);
-      background: #0b1224;
-    }
-    .btn.secondary{
-      background: #fff;
-      color: var(--accent);
-      border: 1px solid var(--line);
-      box-shadow: none;
-    }
-    .btn.secondary:hover{
-      background: rgba(15,23,42,.03);
-      box-shadow: none;
+      flex-wrap: wrap;
     }
 
-    .callout{
-      margin-top: 14px;
-      padding: 12px 14px;
-      border-radius: var(--radius-sm);
-      background: rgba(29,78,216,.06);
-      border: 1px solid rgba(29,78,216,.16);
-      color: var(--text);
-    }
-    .callout strong{ color: var(--accent); }
-
-    .reservation{
-      margin: 18px auto 0;
-      text-align: center;
-    }
-    .reservation p{
-      margin: 6px 0 0;
-      color: var(--muted);
-    }
-    .reservation .big{
-      margin-top: 10px;
-      font-size: 16px;
-      color: var(--text);
-    }
-    .reservation .big a{
-      color: var(--accent-2);
-      text-decoration: none;
-      font-weight: 700;
-    }
-    .reservation .big a:hover{ text-decoration: underline; }
-
-    .social{
-      margin: 14px 0 28px;
-      text-align: center;
-      color: var(--muted);
-    }
-    .social a{
-      color: var(--accent);
-      font-weight: 700;
-      text-decoration: none;
-      padding: 8px 12px;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      background: #fff;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin: 0 6px;
-      transition: background .12s ease, transform .12s ease;
-    }
-    .social a:hover{
-      background: rgba(15,23,42,.03);
-      transform: translateY(-1px);
+    .footer-social a {
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      color: rgba(255, 255, 255, 0.92);
     }
 
-    /* Responsive */
-    @media (max-width: 880px){
-      .grid{ grid-template-columns: 1fr; }
-      .kv .row{ grid-template-columns: 1fr; }
-      .logo{ height: 96px; }
+    @media (max-width: 980px) {
+      .hero-grid,
+      .grid-3,
+      .grid-2,
+      .food-grid,
+      .contact-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-image img {
+        height: 400px;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        width: 100%;
+      }
+
+      .nav-links a {
+        flex: 1 1 calc(50% - 10px);
+        text-align: center;
+      }
+
+      .hero {
+        padding-top: 40px;
+      }
+
+      .button-row {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .btn {
+        justify-content: center;
+      }
     }
   </style>
 </head>
-
 <body>
-  <!-- Header -->
+  <div class="topbar">
+    Ab und zu haben wir geschlossene Gesellschaften. Die Öffnungszeiten können abweichen – bitte informieren Sie sich telefonisch oder über Google.
+  </div>
+
   <header class="header">
-    <div class="container header-inner">
-      <img class="logo" src="logo2.jpg" alt="Winterbergstüble Logo" />
+    <div class="container nav">
+      <div class="brand">
+        <div class="brand-badge">W</div>
+        <div>
+          <p class="brand-title">Winterberg Stüble</p>
+          <p class="brand-subtitle">Ausflugslokal &amp; Sportgaststätte</p>
+        </div>
+      </div>
+      <nav class="nav-links">
+        <a href="#start">Startseite</a>
+        <a href="#essen">Essen</a>
+        <a href="#events">Events</a>
+        <a href="#kontakt">Kontakt</a>
+      </nav>
     </div>
   </header>
 
-  <main class="container">
-    <!-- Weihnachts-Banner -->
-    <section class="hero" aria-label="Weihnachtsgruß">
-      <p><h2>Vom 16.02.2026 bis zum 08.03.2026 haben wir Betriebsferien!</h2></p>
-    </section>
-
-    <!-- Hauptinhalt -->
-    <section class="grid">
-      <!-- Info -->
-      <article class="card">
-        <h2>Willkommen im Winterbergstüble!</h2>
-        <p class="lead">Genießen Sie unsere köstlichen Speisen in gemütlicher Atmosphäre.</p>
-
-        <div class="kv" aria-label="Kontakt & Adresse">
-          <div class="row">
-            <div class="k">Adresse</div>
-            <div class="v">
-              Hengnau 106<br />
-              88142 Wasserburg (am Bodensee)
+  <main>
+    <section id="start" class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="pill">Willkommen im Winterberg Stüble</div>
+          <h1>Ausflugslokal, Sportgaststätte und familiärer Treffpunkt am Bodensee.</h1>
+          <p class="lead">
+            Als Familienunternehmen stehen wir für Gastfreundschaft, Leidenschaft und frisch zubereitete Speisen. Das Winterberg Stüble ist ein Ort für Ausflüge, gesellige Abende, Vereinsrunden und schöne Feiern in gemütlicher Atmosphäre.
+          </p>
+          <div class="button-row">
+            <a class="btn btn-primary" href="#essen">Speisekarten ansehen →</a>
+            <a class="btn btn-secondary" href="#kontakt">Kontakt aufnehmen</a>
+          </div>
+          <div class="stats">
+            <div class="card">
+              <div class="stat-label">Ausflugslokal</div>
+              <div class="stat-title">Familiär &amp; herzlich</div>
+            </div>
+            <div class="card">
+              <div class="stat-label">Frische Küche</div>
+              <div class="stat-title">Mit Liebe zubereitet</div>
+            </div>
+            <div class="card">
+              <div class="stat-label">Events</div>
+              <div class="stat-title">Feiern &amp; Gruppen</div>
             </div>
           </div>
         </div>
 
-        <div class="hours">
-          <h3>Öffnungszeiten</h3>
-          <ul>
-            <li><span>Montag &amp; Dienstag</span> <strong>Ruhetag</strong></li>
-            <li><span>Mittwoch – Samstag</span> <strong>17:00 – 22:00 Uhr</strong></li>
-            <li><span>Sonntag &amp; Feiertage</span> <strong>10:00 – 15:00 Uhr &amp; 17:00 – 22:00 Uhr</strong></li>
-          </ul>
-
-          <div class="divider"></div>
+        <div class="hero-image">
+          <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1400&q=80" alt="Restaurant Atmosphäre" />
+          <div class="hero-overlay">
+            <div class="eyebrow" style="color: rgba(255,255,255,0.82)">Restaurant Eindruck</div>
+            <div style="font-size: 28px; font-weight: 700; margin-top: 8px;">Genuss, Gastlichkeit und besondere Momente</div>
+          </div>
         </div>
-      </article>
-
-      <!-- Menü -->
-      <aside class="card">
-        <h3>Unsere Speisekarten</h3>
-
-        <div class="buttons">
-          <a class="btn" href="Speisekarte.pdf" target="_blank" rel="noopener">
-            🍽️ Speisekarte ansehen
-          </a>
-          
-        </div>
-
-        <div class="callout">
-          Essen zum Mitnehmen ist bei den meisten Gerichten möglich.<br />
-          Rufen Sie uns an unter: <strong>08382 9890885</strong>
-        </div>
-      </aside>
+      </div>
     </section>
 
-    <!-- Reservierung -->
-    <section class="card reservation" aria-label="Reservierungen">
-      <h3>Reservierungen</h3>
-      <p class="big">
-        <strong>Telefon:</strong>
-        <a href="tel:+4983829890885">08382 9890885</a>
-      </p>
-      <p class="big">
-        <strong>E-Mail:</strong>
-        <a href="mailto:winterbergstueble@gmail.com">winterbergstueble@gmail.com</a>
-      </p>
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Restaurant</div>
+          <h2>Euer Restaurant modern und hochwertig präsentiert</h2>
+          <p>
+            Hier können die wichtigsten Eindrücke eures Hauses gezeigt werden: gemütlicher Innenbereich, einladender Außenbereich und die familiäre Atmosphäre, für die das Winterberg Stüble steht.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <article class="image-card">
+            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1400&q=80" alt="Gemütlicher Innenbereich" />
+            <div class="content">
+              <h3>Gemütlicher Innenbereich</h3>
+              <p>Ein Ort für gesellige Abende, Familienessen und besondere Momente.</p>
+            </div>
+          </article>
+
+          <article class="image-card">
+            <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1400&q=80" alt="Einladender Außenbereich" />
+            <div class="content">
+              <h3>Einladender Außenbereich</h3>
+              <p>Ideal für entspannte Stunden und Feiern im Freien.</p>
+            </div>
+          </article>
+
+          <article class="image-card">
+            <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1400&q=80" alt="Familiäre Atmosphäre" />
+            <div class="content">
+              <h3>Familiäre Atmosphäre</h3>
+              <p>Herzlichkeit, Gastfreundschaft und Liebe zum Detail stehen bei uns im Mittelpunkt.</p>
+            </div>
+          </article>
+        </div>
+      </div>
     </section>
 
-    <!-- Social Media -->
-    <section class="social" aria-label="Social Media">
-      <p>Folgen Sie uns auf:</p>
-      <a href="https://www.instagram.com/winterbergstueble/" target="_blank" rel="noopener">📷 Instagram</a>
-      <a href="https://www.facebook.com/Winterbergstueble" target="_blank" rel="noopener">👍 Facebook</a>
+    <section id="essen" class="page">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Speisen &amp; Karten</div>
+          <h2>Speisekarte, Wochenkarte und leckere Einblicke</h2>
+          <p>
+            Hier finden Gäste eure Speisekarten als PDF sowie einen appetitlichen Eindruck eurer Küche. Die PDF-Bereiche können direkt mit euren echten Dateien verknüpft werden.
+          </p>
+        </div>
+
+        <div class="grid-2">
+          <article class="pdf-card">
+            <div class="pdf-top">
+              <div class="eyebrow">PDF</div>
+              <h3>Speisekarte</h3>
+              <p>Hauptkarte als PDF</p>
+            </div>
+            <div class="pdf-body">
+              <div class="pdf-placeholder">
+                <div>
+                  <div class="stat-label">PDF-Bereich</div>
+                  <p>Hier kann direkt die Speisekarte eingebunden oder verlinkt werden.</p>
+                  <p style="margin-top: 8px; color: var(--burnt-caramel); font-weight: 700;">/speisekarte.pdf</p>
+                </div>
+              </div>
+              <a class="btn btn-primary" href="speisekarte.pdf" target="_blank" rel="noreferrer">PDF öffnen</a>
+            </div>
+          </article>
+
+          <article class="pdf-card">
+            <div class="pdf-top">
+              <div class="eyebrow">PDF</div>
+              <h3>Wochenkarte</h3>
+              <p>Aktuelle Wochenkarte als PDF</p>
+            </div>
+            <div class="pdf-body">
+              <div class="pdf-placeholder">
+                <div>
+                  <div class="stat-label">PDF-Bereich</div>
+                  <p>Hier kann direkt die Wochenkarte eingebunden oder verlinkt werden.</p>
+                  <p style="margin-top: 8px; color: var(--burnt-caramel); font-weight: 700;">/wochenkarte.pdf</p>
+                </div>
+              </div>
+              <a class="btn btn-primary" href="wochenkarte.pdf" target="_blank" rel="noreferrer">PDF öffnen</a>
+            </div>
+          </article>
+        </div>
+
+        <div style="margin-top: 48px;">
+          <div class="section-head" style="margin-bottom: 22px;">
+            <div class="eyebrow">Gerichte in Bildern</div>
+            <h2 style="font-size: clamp(28px, 4vw, 38px);">Perfekt, um Gästen Appetit zu machen</h2>
+            <p>Hier könnt ihr später echte Bilder eurer Gerichte einfügen.</p>
+          </div>
+
+          <div class="food-grid">
+            <article class="image-card">
+              <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1200&q=80" alt="Gericht 1" />
+              <div class="content">
+                <div class="stat-label">Empfehlung 1</div>
+                <h3 style="font-size: 20px;">Hier kann ein Gerichtstitel stehen</h3>
+              </div>
+            </article>
+            <article class="image-card">
+              <img src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1200&q=80" alt="Gericht 2" />
+              <div class="content">
+                <div class="stat-label">Empfehlung 2</div>
+                <h3 style="font-size: 20px;">Hier kann ein Gerichtstitel stehen</h3>
+              </div>
+            </article>
+            <article class="image-card">
+              <img src="https://images.unsplash.com/photo-1600891964092-4316c288032e?auto=format&fit=crop&w=1200&q=80" alt="Gericht 3" />
+              <div class="content">
+                <div class="stat-label">Empfehlung 3</div>
+                <h3 style="font-size: 20px;">Hier kann ein Gerichtstitel stehen</h3>
+              </div>
+            </article>
+            <article class="image-card">
+              <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1200&q=80" alt="Gericht 4" />
+              <div class="content">
+                <div class="stat-label">Empfehlung 4</div>
+                <h3 style="font-size: 20px;">Hier kann ein Gerichtstitel stehen</h3>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="events" class="page">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Events</div>
+          <h2>Feiern, Gruppen und individuelle Veranstaltungen</h2>
+          <p>
+            Ob private Feier, Gruppenessen oder besondere Veranstaltung: Das Winterberg Stüble bietet verschiedene Möglichkeiten für eure Gäste und berät persönlich bei der Planung.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <article class="image-card">
+            <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1400&q=80" alt="Restaurantbereich innen" />
+            <div class="content">
+              <h3>Restaurantbereich innen</h3>
+              <p>Im Innenbereich bieten wir Platz für maximal 60 Personen. Bei großen Gruppen arbeiten wir mit Gruppentischen statt einer langen Tafel.</p>
+              <div class="event-meta">Bis max. 60 Personen</div>
+            </div>
+          </article>
+
+          <article class="image-card">
+            <img src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&w=1400&q=80" alt="Restaurantbereich außen" />
+            <div class="content">
+              <h3>Restaurantbereich außen</h3>
+              <p>Auch unser Außenbereich eignet sich hervorragend für Feiern und Gruppen in angenehmer Atmosphäre.</p>
+              <div class="event-meta">Ca. 60 Personen</div>
+            </div>
+          </article>
+
+          <article class="image-card">
+            <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1400&q=80" alt="Raummietung im oberen Geschoss" />
+            <div class="content">
+              <h3>Raummietung im oberen Geschoss</h3>
+              <p>Im oberen Geschoss unseres Hauses steht ein Raum für private Feiern zur Verfügung. Für Preise und weitere Infos kontaktiert uns bitte direkt.</p>
+              <div class="event-meta">Preis auf Anfrage</div>
+            </div>
+          </article>
+        </div>
+
+        <div class="grid-2" style="margin-top: 28px;">
+          <article class="info-card">
+            <div class="content">
+              <div class="eyebrow">Event-Infos</div>
+              <h3>Wichtige Hinweise für Gruppen</h3>
+              <div class="list">
+                <p>• Innenbereich: Platz für max. 60 Personen</p>
+                <p>• Außenbereich: Platz für ca. 60 Personen</p>
+                <p>• Bei großen Personenzahlen keine Tafel, sondern Gruppentische</p>
+                <p>• Ab Gruppengröße 30 Buffet statt à la carte</p>
+                <p>• Buffet-Alternativen: Pizza-Party, Schwäbisch, Griechisch oder weitere Ideen</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="info-card gradient-card">
+            <div class="content">
+              <div class="eyebrow" style="color: rgba(255,255,255,0.8);">Individuelle Anfrage</div>
+              <h3>Feiern ganz nach euren Wünschen</h3>
+              <p>
+                Kontaktiert uns, um einen Termin auszumachen und auf eure Wünsche einzugehen. Für private Feiern, Gruppenanfragen und die Raummietung im oberen Geschoss beraten wir persönlich.
+              </p>
+              <div class="list" style="margin-top: 18px;">
+                <p>Raummietung im oberen Geschoss möglich</p>
+                <p>Persönliche Beratung für Ablauf und Speisen</p>
+                <p>Kontakt direkt über unsere Kontaktseite</p>
+              </div>
+              <div style="margin-top: 22px;">
+                <a class="btn" href="#kontakt" style="background: white; color: var(--oxford-navy);">Zur Kontaktseite</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="kontakt" class="page">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Kontakt</div>
+          <h2>So finden und erreichen Gäste euch</h2>
+          <p>
+            Alle wichtigen Kontaktinformationen auf einen Blick – inklusive Adresse, Öffnungszeiten, Telefon, E-Mail, Social Media und Karte.
+          </p>
+        </div>
+
+        <div class="contact-layout">
+          <article class="info-card">
+            <div class="content">
+              <h3>Winterberg Stüble</h3>
+              <p style="margin-bottom: 18px;">Hier finden Gäste alle wichtigen Kontaktinformationen sowie Hinweise zu möglichen Abweichungen bei den Öffnungszeiten.</p>
+
+              <div class="contact-stack">
+                <div class="contact-item">
+                  <div class="contact-label">Adresse</div>
+                  <div class="contact-value">Hengnau 106, 88142 Wasserburg (Bodensee)</div>
+                </div>
+
+                <div class="contact-item">
+                  <div class="contact-label">Telefon</div>
+                  <div class="contact-value">08382 9890885</div>
+                </div>
+
+                <div class="contact-item">
+                  <div class="contact-label">E-Mail</div>
+                  <div class="contact-value">winterbergstueble@gmail.com</div>
+                </div>
+
+                <div class="contact-item">
+                  <div class="contact-label">Öffnungszeiten</div>
+                  <div class="hours-list">
+                    <div>Mo (und Di im Winter): Ruhetag</div>
+                    <div>Di - Sa: 17 - 22 Uhr</div>
+                    <div>So &amp; Feiertage: 10 - 15 Uhr &amp; 17 - 22 Uhr</div>
+                  </div>
+                  <div class="notice">Ab und zu haben wir geschlossene Gesellschaften. Die Öffnungszeiten können abweichen – bitte informieren Sie sich telefonisch oder über Google.</div>
+                </div>
+
+                <div class="contact-item">
+                  <div class="contact-label">Instagram &amp; Facebook</div>
+                  <div class="social-links">
+                    <a href="https://www.instagram.com/winterbergstueble" target="_blank" rel="noreferrer">@winterbergstueble</a>
+                    <a href="https://www.facebook.com/" target="_blank" rel="noreferrer">Facebook</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="map-card">
+            <h3 style="margin: 0 0 10px; font-size: 28px;">Anfahrt &amp; Karte</h3>
+            <p style="margin: 0; color: var(--text-soft);">
+              Finden Sie uns ganz einfach über Google Maps. Vor Ort stehen Ihnen sehr viele Parkplätze zur Verfügung – auch für größere Gruppen.
+            </p>
+            <div class="map-frame">
+              <iframe
+                title="Google Maps"
+                src="https://www.google.com/maps?q=Hengnau+106,+88142+Wasserburg+(Bodensee)&output=embed"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                allowfullscreen>
+              </iframe>
+            </div>
+            <p style="margin-top: 14px; color: var(--burnt-caramel); font-weight: 700;">
+              Viele Parkmöglichkeiten direkt am Restaurant vorhanden.
+            </p>
+          </article>
+        </div>
+      </div>
     </section>
   </main>
 
-  <script>
-    // Schnee erzeugen (leicht & performant)
-    function createSnowflake() {
-      const snowflake = document.createElement("div");
-      snowflake.className = "snowflake";
-      snowflake.textContent = "❄";
-
-      const size = Math.random() * 12 + 10; // 10–22px
-      const left = Math.random() * window.innerWidth;
-      const fallDuration = Math.random() * 5 + 6; // 6–11s
-      const swayDuration = Math.random() * 2 + 2.5; // 2.5–4.5s
-
-      snowflake.style.left = left + "px";
-      snowflake.style.fontSize = size + "px";
-      snowflake.style.animationDuration = `${fallDuration}s, ${swayDuration}s`;
-
-      document.body.appendChild(snowflake);
-
-      window.setTimeout(() => snowflake.remove(), (fallDuration + 1) * 1000);
-    }
-
-    // Weniger Dichte auf mobilen Geräten
-    const isMobile = window.matchMedia("(max-width: 880px)").matches;
-    const interval = isMobile ? 550 : 320;
-
-    setInterval(createSnowflake, interval);
-  </script>
+  <footer>
+    <div class="container footer-row">
+      <div>
+        <div style="font-size: 20px; font-weight: 700;">Winterberg Stüble</div>
+        <div style="margin-top: 6px; color: rgba(255,255,255,0.72);">
+          Familienunternehmen mit Herz, frischer Küche und Platz für besondere Momente.
+        </div>
+      </div>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/winterbergstueble" target="_blank" rel="noreferrer">Instagram</a>
+        <a href="https://www.facebook.com/" target="_blank" rel="noreferrer">Facebook</a>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
 
